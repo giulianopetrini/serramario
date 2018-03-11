@@ -110,7 +110,7 @@ void menu(){
                     lcd.print(SogliaTemperaturaSerra);  
                 }
                 // Ritardo di lettura
-                delay(25);
+                delay(300);
             }
       }
       // Verifico se la temperatura ventilatore è stata impostata
@@ -143,7 +143,7 @@ void menu(){
                     lcd.print(SogliaTemperaturaVentilatore);   
                 }
                 // Ritardo di lettura
-                delay(25);
+                delay(300);
             }
             return;
       }
@@ -195,8 +195,8 @@ void loop() {
       lcd.print("Off");
       lcd.setCursor(11,0);
       lcd.print("Serra");
-     // lcd.setCursor(10, 1);
-     // lcd.print("Chiusa"); 
+      lcd.setCursor(10, 1);
+      lcd.print("Chiusa"); 
       //Serial.println(SogliaTemperaturaSerra);
      //Serial.println( SogliaTemperaturaVentilatore);
     // Serial.println(misurazionePioggia);
