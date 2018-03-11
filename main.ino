@@ -191,20 +191,35 @@ void loop() {
                                             // posiziono il cursore alla colonna 12 e riga 0
       lcd.setCursor(5, 0);
       lcd.print(t);
-      lcd.setCursor(5, 1);
-      lcd.print("Off");
+      //lcd.setCursor(5, 1);
+      //lcd.print("Off");
       lcd.setCursor(11,0);
       lcd.print("Serra");
-      lcd.setCursor(10, 1);
-      lcd.print("Chiusa"); 
+      //lcd.setCursor(10, 1);
+      //lcd.print("Chiusa"); 
       //Serial.println(SogliaTemperaturaSerra);
-     //Serial.println( SogliaTemperaturaVentilatore);
-    // Serial.println(misurazionePioggia);
-    // Serial.println(t);
-    // Serial.println(h);
-       //Serial.println(ReleSerra);
+      //Serial.println( SogliaTemperaturaVentilatore);
+      // Serial.println(misurazionePioggia);
+      // Serial.println(t);
+      // Serial.println(h);
+      //Serial.println(ReleSerra);
 
-  
+       if(digitalRead(ReleSerra) == HIGH){
+            lcd.setCursor(10, 1);
+            lcd.print("Aperta"); 
+       }else{
+            lcd.setCursor(10, 1);
+            lcd.print("Chiusa"); 
+       }
+
+       if(digitalRead(ReleVentilatore) == HIGH){
+            lcd.setCursor(5, 1);
+            lcd.print("On"); 
+       }else{
+            lcd.setCursor(5, 1);
+            lcd.print("Off"); 
+       }
+      
        misurazionePioggia = analogRead(A0);
       // Se il valore è minore di 400 stà piovendo quindi Chiudo tutto
       if(misurazionePioggia < 400){
@@ -222,7 +237,7 @@ void loop() {
           if (t <= (SogliaTemperaturaSerra-5))   
           {
             digitalWrite(ReleSerra, LOW);
-                // Spengo anche il ventilatore
+            // Spengo anche il ventilatore
             digitalWrite(ReleVentilatore, LOW);
             lcd.setCursor(10, 1);
             lcd.print("Chiusa"); 
